@@ -92,7 +92,4 @@ export const TILE_BLUEPRINTS: TileBlueprint[] = [
     {component: 0}
 ];
 
-// the minimum proportional size of a tile
-export const MIN_TILE_PROPORTION = 0.25;
-
 // endregion

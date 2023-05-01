@@ -68,7 +68,7 @@ export default function Workspace() {
             <WorkspaceContext.Provider value={{tilemap, setTilemap}}>
                 <div className={'knowledge-box'}>
                     <div className={'tile-box'}>
-                        <Tile blueprint={tile_blueprint} style={{width:50}}/>
+                        <Tile blueprint={tile_blueprint}/>
                     </div>
                     <div className={'blueprint-selection-box'}>
                         {Object.keys(TILE_BLUEPRINTS).map((key: string, index: number) => {
