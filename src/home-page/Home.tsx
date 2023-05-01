@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import {Theme, ThemeState} from "../redux/theme_slice";
 import './home_styling.scss'
 import Drawer from "./Drawer";
-import Workspace from "./Workspace";
+import Workspace from "./workspace/Workspace";
 
 
 // the main home page component
