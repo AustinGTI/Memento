@@ -1,4 +1,5 @@
 import React from "react";
+import {BlueprintReducerAction} from "./Workspace";
 
 // region TYPES & INTERFACES
 
@@ -14,17 +15,20 @@ export interface TileBlueprint {
     left?: TileBlueprint,
     right?: TileBlueprint,
     component?: number
+    tile_ratio?: number
 }
 
 // each type of tile blueprint has its own interface
 export interface TileBlueprintTopBottom {
     top: TileBlueprint,
-    bottom: TileBlueprint
+    bottom: TileBlueprint,
+    tile_ratio: number
 }
 
 export interface TileBlueprintLeftRight {
     left: TileBlueprint,
-    right: TileBlueprint
+    right: TileBlueprint,
+    tile_ratio: number
 }
 
 export interface TileBlueprintLeaf {
@@ -37,7 +41,8 @@ export interface WorkspaceContextInterface {
     tilemap?: TileMap,
     // the function used to set the tile-map
     setTilemap?: (action : {type: string, payload: { index: number, component: JSX.Element }}) => void,
-
+    // the function used to edit the tile-blueprint dimensions
+    setTileBlueprint?: (action: BlueprintReducerAction) => void,
 }
 
 // endregion
@@ -51,42 +56,53 @@ export const TILE_BLUEPRINTS: TileBlueprint[] = [
         left: {component: 0},
         right: {
             top: {component: 1},
-            bottom: {component: 2}
-        }
+            bottom: {component: 2},
+            tile_ratio: 0.5
+        },
+        tile_ratio: 0.5
+
     },
     // two tiles to the left, one to the right
     {
         left: {
             top: {component: 0},
-            bottom: {component: 1}
+            bottom: {component: 1},
+            tile_ratio: 0.5
         },
-        right: {component: 2}
+        right: {component: 2},
+        tile_ratio: 0.5
     },
     // one tile to the top, two to the bottom
     {
         top: {component: 0},
         bottom: {
             left: {component: 1},
-            right: {component: 2}
-        }
+            right: {component: 2},
+            tile_ratio: 0.5
+        },
+        tile_ratio: 0.5
     },
     // two tiles to the top, one to the bottom
     {
         top: {
             left: {component: 0},
-            right: {component: 1}
+            right: {component: 1},
+            tile_ratio: 0.5
         },
-        bottom: {component: 2}
+        bottom: {component: 2},
+        tile_ratio: 0.5
     },
     // one tile at the top, one at the bottom
     {
         top: {component: 0},
-        bottom: {component: 1}
+        bottom: {component: 1},
+        tile_ratio: 0.5
     },
     // one tile to the left, one to the right
     {
         left: {component: 0},
-        right: {component: 1}
+        right: {component: 1},
+        tile_ratio: 0.5
     },
     // one tile
     {component: 0}
